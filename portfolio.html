@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mamoona Ramzan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: rgb(249, 247, 247);
+      color: #333;
+    }
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(to right, #0D3B66, #195992);  
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #112D4E;
+      transform: translateY(-2px);
+    }
+    
+    /* Sections */
+    .section {
+      padding: 4rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .dark-section {
+      background: linear-gradient(to bottom, #000000 5%, #0A2647 50%, #1E5D9D 80%);
+      color: white;
+    }
+    
+    .light-section {
+      background: #f9f7f7;
+      color: #333;
+    }
+    #about {
+      background: linear-gradient(to bottom, #000000 5%, #0A2647 50%, #1E5D9D 80%);
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      position: relative;
+      color: white;
+      overflow: hidden;
+      min-height: 100vh;
+      padding: 4rem 2rem;
+    }
+
+    /* animated code particles background */
+    .code-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      display: block;
+      font-family: 'Courier New', monospace;
+      font-size: clamp(12px, 2vw, 24px);
+      color: rgba(255,255,255,0.7);
+      font-weight: 650;
+      text-shadow: 0 0 10px rgba(87, 197, 182, 0.3);
+      animation: floatUp linear infinite;
+      opacity: 0;
+      white-space: nowrap;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      5% {
+        opacity: 0.7;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive about content container */
+    .about-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* Developer avatar with animation */
+        .developer-avatar{
+        width: clamp(120px, 15vw, 180px);
+        height: clamp(120px, 15vw, 180px);
+        border-radius: 50%;
+        background: linear-gradient(to top, #0A2647 20%, #1E5D9D 80%);
+        display: flex;
+        margin: 0 auto 2rem;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .developer-avatar::before,
+    .developer-avatar::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid rgba(255,255,255,0.6);
+        transform: translate(-50%, -50%);
+        animation: multiPulse 2s infinite;
+    }
+
+    .developer-avatar::after {
+        animation-delay: 1s;
+    }
+
+    @keyframes multiPulse {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1.55);
+            opacity: 0;
+        }
+    }
+
+    .avatar-icon {
+        font-size: clamp(4.5rem, 8vw, 6rem);
+        color: white;
+        z-index: 2;
+        position: relative;
+    }
+    /* Responsive typewriter effect */
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: 0.05em;
+      animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      border-right: 3px solid white;
+      font-size: clamp(1.2rem, 3vw, 2.5rem);
+      max-width: 100%;
+    }
+
+    .typewriter.subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      margin-top: 1rem;
+      white-space: normal;
+      line-height: 1.6;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink-caret {
+      from,
+      to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Headings */
+    h1 {
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .dark-section h2 {
+      color: white;
+    }
+    
+    .light-section h2 {
+      color: #112D4E;
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #3F72AF, #112D4E);
+    }
+    
+    .dark-section h2:after {
+      background: linear-gradient(to right, #DBE2EF, white);
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .dark-section h3 {
+      color: white;
+    }
+    
+    .light-section h3 {
+      color: #3F72AF;
+    }
+    
+    /* Section intro text */
+    .section-intro {
+      max-width: 600px;
+      display: flex;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 10 auto;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+    
+    /* Cards */
+    .card, .experience-card, .project-card, .skill-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-top: 4px solid #3F72AF;
+    }
+    
+    .card:hover, .experience-card:hover, .project-card:hover, .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+    
+    /* Education */
+    .education-container {
+      width: 100%;
+      max-width: 650px;
+      position: relative;
+    }
+    
+    .education-container:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      border-radius: 2px;
+    }
+    
+    .education-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      position: relative;
+      border-left: 4px solid #1A5F7A;
+      margin-left: 50px;
+    }
+    
+    .education-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+    
+      .education-logo {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      flex-shrink: 0;
+      position: absolute;
+      left: -50px;
+      top: 45%;
+      transform: translateY(-50%);
+    }
+    
+    .education-logo img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+    }
+    
+    .education-details {
+      flex: 1;
+      padding-left: 60px;
+    }
+    
+    .education-years {
+      color: #1A5F7A;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .course-tag {
+      display: inline-block;
+      background: #f0f5ff;
+      color: #3F72AF;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin: 2px;
+    }
+    
+    /* Experience */
+    .experience-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+    
+    .experience-card {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      height: 100%;
+    }
+    
+    .experience-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .company-logo {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(145deg, #f0f0f0, #e6e6e6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      flex-shrink: 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .company-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    
+    .experience-details {
+      flex: 1;
+      text-align: center;
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+    
+    .skill-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-card p {
+      color: #333; 
+      font-weight: 500;
+    }
+    
+    
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #0D3B66;  
+      background: linear-gradient(45deg, #0D3B66, #195992);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .skill-name {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #112D4E; 
+    }
+    
+    /* Projects*/
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    
+    .project-card {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      height: 100%;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+    
+    .project-card h3 {
+      color: #112D4E; 
+    }
+    
+    .project-card p {
+      color: #333; 
+      margin-bottom: 0.5rem;
+    }
+    
+    .text-sm {
+      font-size: 0.85rem;
+      color: #555; 
+    }
+    
+    .github-btn {
+      margin-top: auto;
+      text-align: center;
+      padding-top: 1rem;
+    }
+    
+      .github-btn a {
+      display: inline-block;
+      background: linear-gradient(45deg, #0D3B66, #195992);  
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 10px rgba(13, 59, 102, 0.3);
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+    
+    .github-btn a:hover {
+      transform: translateY(-5px) rotate(360deg);
+      box-shadow: 0 6px 15px rgba(17, 45, 78, 0.4);
+    }
+    .skill-tag {
+      display: inline-block;
+      background: #f0f5ff;
+      color: #0D3B66;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      margin: 2px;
+    }
+    /* Certification Section Styles */
+    .certifications-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .certification-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+        max-width: 900px;
+        width: 100%;
+    }
+
+    .certification-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(to right, #0D3B66, #195992);
+        background-size: 200% 100%;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+        0%, 100% { background-position: -200% 0; }
+        50% { background-position: 200% 0; }
+    }
+
+    .certification-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+    }
+
+    .certification-icon {
+        width: 140px;
+        height: 140px;
+        border-radius: 20px;
+        background: linear-gradient(to right, #0D3B66, #195992);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .certification-icon::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: all 0.6s;
+    }
+
+    .certification-card:hover .certification-icon::before {
+        transform: rotate(45deg) translateX(100%);
+    }
+
+    .certification-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .certification-content {
+        flex: 1;
+        color: #2c3e50;
+    }
+
+    .certification-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #0D3B66;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .certification-provider {
+        font-size: 1rem;
+        color: black;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .certification-skills {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .certification-skills li {
+        display: flex;
+        align-items: center;
+        font-size: 0.95rem;
+        color: #555;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+
+    .certification-skills li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        color: #0D3B66;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    .certification-link {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(to right, #0D3B66, #195992);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+    }
+
+    .certification-link:hover {
+        transform: translateY(-3px) rotate(45deg);
+        box-shadow: 0 12px 24px rgba(102, 126, 234, 0.4);
+    }
+
+    .certification-badge {
+        position: absolute;
+        top: -3px;
+        left: 15px;
+        background: linear-gradient(to right, #0D3B66, #195992);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 400;
+        box-shadow: 0 5px 15px #195992;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    @media (max-width: 768px) {
+        .certification-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem;
+            gap: 1.5rem;
+        }
+        
+        .certification-icon {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .certification-link {
+            position: static;
+            margin-top: 1rem;
+        }
+    }
+    
+    /* Contact */
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 800px;
+    }
+    
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: white;  
+      color:#0D3B66; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+      font-size: 2.25rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      transition: all 0.3s;
+    }
+    
+    .contact-icon:hover {
+      transform: translateY(-5px) rotate(360deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    
+    .contact-text {
+      font-weight: 500;
+    }
+    
+    .contact-text a {
+      color: white;  
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .contact-text a:hover {
+      color: #0D3B66;
+    }
+    
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .skills-container,
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .experience-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .certifications-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .education-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .education-container:before {
+        display: none;
+      }
+      
+      .education-card {
+        margin-left: 0;
+        border-left: none;
+        border-top: 4px solid #1A5F7A;
+      }
+      
+      .education-logo {
+        position: relative;
+        left: 0;
+        margin-bottom: -5rem;
+      }
+      
+      .education-details {
+        padding-left: 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .skills-container,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .contact-info {
+        grid-template-columns: 1fr;
+      }
+    }
+        /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      #about {
+        padding: 2rem 1rem;
+        min-height: 80vh;
+      }
+      
+      .about-content {
+        padding: 1rem 0.5rem;
+      }
+      
+      .particle {
+        font-size: clamp(10px, 3vw, 18px);
+      }
+      
+      .typewriter {
+        animation: none;
+        white-space: normal;
+        border-right: none;
+        text-align: center;
+      }
+      
+      .typewriter.subtitle {
+        margin-top: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #about {
+        padding: 1.5rem 0.5rem;
+      }
+      
+      .developer-avatar {
+        margin-bottom: 1.5rem;
+      }
+      .section-intro {
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+        font-size: clamp(0.7rem, 4vw, 1.1rem);
+        line-height: 1.5;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-brand">Mamoona Ramzan</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </header>
+
+ <!-- About Section with Animated Particles -->
+<section id="about" class="section dark-section">
+  <div class="code-particles" id="particles-container">
+    <!-- Static particles for immediate display -->
+    <span class="particle" style="left: 10%; animation-delay: 0s; animation-duration: 20s;">http</span>
+    <span class="particle" style="left: 20%; animation-delay: 1s; animation-duration: 25s;">[]</span>
+    <span class="particle" style="left: 30%; animation-delay: 2s; animation-duration: 18s;">!=</span>
+    <span class="particle" style="left: 40%; animation-delay: 3s; animation-duration: 22s;">null</span>
+    <span class="particle" style="left: 50%; animation-delay: 4s; animation-duration: 24s;">&&</span>
+    <span class="particle" style="left: 60%; animation-delay: 5s; animation-duration: 20s;">break</span>
+    <span class="particle" style="left: 70%; animation-delay: 6s; animation-duration: 26s;">{}</span>
+    <span class="particle" style="left: 80%; animation-delay: 7s; animation-duration: 19s;">main()</span>
+    <span class="particle" style="left: 90%; animation-delay: 8s; animation-duration: 23s;">if</span>
+    <span class="particle" style="left: 15%; animation-delay: 9s; animation-duration: 21s;">await</span>
+  </div>
+
+  <div class="about-content fade-in">
+    <!-- Developer avatar -->
+    <div class="developer-avatar">
+      <div class="avatar-icon">
+        <i class="fa-solid fa-user"></i>
+      </div>
+    </div>
+    
+    <h1 class="typewriter">Hi, I'm Mamoona</h1>
+    <p style="animation-delay: 1.5s;">
+      Software Engineer with strong technical foundation and a curious, forward-thinking mindset. Passionate about building seamless digital experiences and smart systems that solve real world problem.
+    </p>
+  </div>
+</section> 
+
+  <!-- Education Section-->
+  <section id="education" class="section light-section">
+    <div class="fade-in">
+      <h2>Education</h2>
+      <div class="education-container">
+        <div class="education-card">
+          <div class="education-logo">
+            <img src="NUST-Signature-01.png" alt="NUST Logo">
+          </div>
+          <div class="education-details">
+            <h3>Bachelors of Software Engineering</h3>
+            <p class="education-years">2021–2025</p>
+            <p><strong>National University of Sciences and Technology (NUST)</strong></p>
+            <p>Courses:</p>
+            <div style="margin-top: 10px;">
+              <span class="course-tag">Fundamentals of Programming</span>
+              <span class="course-tag">Data Structures and Algorithmn</span>
+              <span class="course-tag">Object Oriented Programming</span>
+              <span class="course-tag">Design and Analysis of Algorithmn</span>
+              <span class="course-tag">Database Systems</span>
+              <span class="course-tag">Computer Networks</span>
+              <span class="course-tag">Software Engineering</span>
+              <span class="course-tag">Web Development</span>
+              <span class="course-tag">Internet of Things</span>
+              <span class="course-tag">Data Mining</span>
+              <span class="course-tag">Machine Learning</span>
+              <span class="course-tag">Deep Learning</span>
+              <span class="course-tag">Deep Image Processing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section dark-section">
+    <h2>Skills</h2>
+    <div class="skills-container fade-in">
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="skill-name">Programming Languages</div>
+        <p>C, C++, Java, Python</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fab fa-react"></i>
+        </div>
+        <div class="skill-name">Front-end Development</div>
+        <p>HTML5, CSS3, JavaScript</p>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="skill-name">Mobile Development</div>
+        <p>Dart and Flutter</p>
+      </div>
+      
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-database"></i>
+        </div>
+        <div class="skill-name">Databases</div>
+        <p>Mysql, Firebase, MongoDB</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <div class="skill-name">Machine Learning</div>
+        <p>Python, TensorFlow, Pytorch, Scikit-learn, OpenCV</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fa-solid fa-file-code"></i>
+        </div>
+        <div class="skill-name">Libraries</div>
+        <p>Numpy, Pandas, Matplotlib</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <div class="skill-name">Tools and Technologies</div>
+        <p>VS Code, Android Studio, Matlab, Jupyter Notebook, Postman</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-code-branch"></i>
+        </div>
+        <div class="skill-name">Version Control</div>
+        <p>Git and GitHub</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <div class="skill-name">UI/UX Design</div>
+        <p>Figma and Canva</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section-->
+  <section id="experience" class="section light-section">
+    <h2>Experience</h2>
+    <div class="experience-container fade-in">
+      <div class="experience-card">
+        <div class="company-logo">
+          <img src="devlogix.jpeg" alt="Company Logo">
+        </div>
+        <div class="experience-details">
+          <h3>Mobile App Developer</h3>
+          <p><strong>2024 - Nov 2024</strong></p>
+          <p>Built cross-platform mobile apps with Firebase backend. Designed and developed the admin panel for  Lawyer Digital Diary mobile app using Flutter, Dart, and Firebase, showcasing strong coding skills, problem-solving abilities, and real-time database integration. Created an intuitive and user-friendly interface for the SwiftHR mobile app, enhancing overall user experience.</p>
+        </div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="company-logo">
+          <img src="Inlights.jpeg" alt="Company Logo">
+        </div>
+        <div class="experience-details">
+          <h3>Machine Learning Engineer</h3>
+          <p><strong>2025-Present</strong> </p>
+          <p>Preprocessed large datasets, performed feature engineering, and fine-tuned machine learning models to enhance classification and prediction accuracy. Developed, optimized, and integrated machine learning models into applications, ensuring efficient real-time inferences. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section dark-section">
+    <h2>Projects</h2>
+    <div class="projects-grid fade-in">
+      <div class="project-card">
+        <h3>Dweet</h3>
+        <p>Developed a MVP of an Errand-Running mobile app for a client. Implemented core features including task posting, runner matching, and manual payment handling, laying the groundwork for future premium services.</p>
+        <div>
+              <span class="skill-tag">Dart</span>
+              <span class="skill-tag">Flutter</span>
+              <span class="skill-tag">Firebase Authentication</span>
+              <span class="skill-tag">Cloud Firestore</span>
+              <span class="skill-tag">Cloud Storage</span>
+              <span class="skill-tag">Firebase In-App Messaging</span>
+              <span class="skill-tag">UI/UX</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <h3>Visual Narrator</h3>
+        <p>Developed an image description generator using CNN and LSTM trained on Flickr 8k Dataset.Implemented Tinker UI with real-time processing feedback, image preview capabilities, and a dual-panel layout that displays both the generated caption and detailed analysis</p>
+        <div>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">Keras</span>
+              <span class="skill-tag">CNN</span>
+              <span class="skill-tag">LSTM</span>
+              <span class="skill-tag">DenseNet201</span>
+              <span class="skill-tag">Model Training</span>
+              <span class="skill-tag">Tinker UI</span>
+        </div> 
+        <div class="github-btn">
+          <a href="https://github.com/MamoonaRamzan/Visual-Narrator" target="_blank" aria-label="GitHub Repository">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <h3>AutoAwake</h3>
+        <p>Developed a YOLOv8-based real-time driver drowsiness detection system. The system detects eye closure and yawning to identify potential drowsiness, providing visual and audio alerts to prevent accidents caused by driver fatigue.</p>
+        <div>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Open CV</span>
+              <span class="skill-tag">Pytorch</span>
+              <span class="skill-tag">Yolov8</span>
+              <span class="skill-tag">Pygame</span>
+              <span class="skill-tag">Model Training</span>
+              <span class="skill-tag">Model Evaluation</span>
+              
+        </div> 
+        <div class="github-btn">
+          <a href="https://github.com/MamoonaRamzan/AutoAwake-Driver-Safety-System" target="_blank" aria-label="GitHub Repository">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>Social Spark</h3>
+        <p>Developed a minimalistic cross platform social media app. Implemented core functionalities such as user authentication, user profile, post creation, feed management, and real-time chat. Designed a user-friendly interface with engaging features.</p>
+        <div>
+              <span class="skill-tag">Dart</span>
+              <span class="skill-tag">Flutter</span>
+              <span class="skill-tag">Firebase Authentication</span>
+              <span class="skill-tag">Cloud Firestore</span>
+              <span class="skill-tag">Cloud Storage</span>
+              <span class="skill-tag">Firebase In-App Messaging</span>
+              <span class="skill-tag">UI/UX</span>
+        </div>      
+        <div class="github-btn">
+          <a href="https://github.com/zoyafatima00/socialmediaapp" target="_blank" aria-label="GitHub Repository">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+      <div class="project-card">
+        <h3>MatScan</h3>
+        <p>Developed a computer vision based application  for automated surface defect inspection using a fine-tuned MobileNetV2 model. System Classifies different defect types and provides visual feedback, predictive insights, and transparency through Grad-CAM.</p>
+        <div>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">OpenCV</span>
+              <span class="skill-tag">MobileNetV2</span>
+              <span class="skill-tag">Model Training</span>
+              <span class="skill-tag">Model Evaluation</span>
+              <span class="skill-tag">Tinker UI</span>
+        </div>  
+        <div class="github-btn">
+          <a href="https://github.com/MamoonaRamzan/MatScan" target="_blank" aria-label="GitHub Repository">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Certifications Section-->
+  <section id="certifications" class="section light-section">
+    <div class="fade-in">
+      <h2>Certifications</h2> 
+      <div class="certifications-container">
+        <div class="certification-card">
+            <div class="certification-badge">Verified</div>
+            <div class="certification-icon">
+                <div class="certification-logo">
+                    <img src="course.jpeg" alt="Machine Learning Certification Logo">
+                </div>
+            </div>
+            
+            <div class="certification-content">
+                <h3 class="certification-title">Machine Learning Specialization</h3>
+                <p class="certification-provider">by Stanford University and DeepLearning.AI</p>
+                
+                <ul class="certification-skills">
+                    <li>Supervised Machine Learning: Regression and Classification</li>
+                    <li>Advanced Learning Algorithms</li>
+                    <li>Unsupervised Learning, Recommenders, Reinforcement Learning</li>
+                </ul>
+            </div>
+            
+            <a href="https://coursera.org/share/0a86ce5b38750bcc6cf2aac978028a27" 
+              class="certification-link" 
+              target="_blank" 
+              title="View Certificate">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    </div>
+    </div>
+  </section>
+  <!-- Contact Section -->
+  <section id="contact" class="section dark-section">
+    <h2>Contact Me</h2>
+    <div class="section-intro fade-in">
+      <p >Feel free to reach out for collaborations.</p>
+    </div>
+    <div class="contact-info fade-in">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-text">
+          <a href="mailto:mamoonaramzan2@gamil.com">mamoonaramzan2@gmail.com</a>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="contact-text">
+          <a href="tel:+923338171175">+923338171175</a>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </div>
+        <div class="contact-text">
+          <a href="https://www.linkedin.com/in/mamoona-ramzan/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fa-brands fa-github-alt"></i>
+        </div>
+        <div class="contact-text">
+          <a href="https://github.com/MamoonaRamzan" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #112D4E; color: white; text-align: center; padding: 1.5rem;">
+    <p>© 2025 Mamoona Ramzan. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for animations -->
+  <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Animation for fade-in elements
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  fadeElements.forEach(element => {
+    observer.observe(element);
+  });
+  
+  //code particles 
+  const codeParticles = document.getElementById('particles-container');
+   const particles = [
+  'print', '!=', '<head>', 'class', 'model()', 'true', 'url', '[]', 'catch()', 'dict', 
+  'super', 'get()', 'try[]', 'void', 'new', 'add', 'xml', '<br>', 
+  '==', '<title>', 'null', 'json', 'reduce()', 'if', 'filter', 'list[]', 'else', 
+  '.json()', 'bool', 'type()', 'with', 'len', 'write', 'read', 'const', '<body>', 
+  'str', 'break', 'for', 'switch', '<span>', '<>', 'do', 'this', '<p>', 'html', 
+  'map', 'tf', 'init', 'while', 'set', 'push', '<dev>', 
+  'false', '<style>', 'def', 'ts', 'sql', 'os', 'pop', '=>', 'array', 'test', 
+  'try[]', 'list[]', 'url', '@', 'pd', 'static', 'debug', '==', '.style()', 'range', 
+  '!==', '#', '++', '%', 'let', '==', 'int', '&&', '%=', 'add', 'start()', 'http', 'np', '!==', '{}'
+];
+
+  
+  // Function to create a new particle
+  function createParticle() {
+    const particle = document.createElement('span');
+    particle.classList.add('particle');
+    particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+    
+    // Random horizontal position (avoiding edges for better visibility)
+    particle.style.left = (Math.random() * 80 + 10) + '%';
+    
+    // Random animation duration between 15-30 seconds
+    const duration = Math.random() * 15 + 15;
+    particle.style.animationDuration = duration + 's';
+    
+    // Random delay to spread out the particles
+    particle.style.animationDelay = Math.random() * 5 + 's';
+    
+    // Add slight horizontal drift
+    const drift = (Math.random() - 0.5) * 40; // -20px to +20px drift
+    particle.style.setProperty('--drift', drift + 'px');
+    
+    codeParticles.appendChild(particle);
+    
+    // Remove particle after animation completes to prevent DOM buildup
+    setTimeout(() => {
+      if (particle.parentNode) {
+        particle.parentNode.removeChild(particle);
+      }
+    }, (duration + 5) * 1000);
+  }
+  
+  // Create initial burst of particles with staggered timing
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => {
+      createParticle();
+    }, i * 1000); // Create one every second initially
+  }
+  
+  // Continue creating particles at intervals
+  setInterval(() => {
+    // Only create new particles if there aren't too many
+    const currentParticles = codeParticles.querySelectorAll('.particle').length;
+    if (currentParticles < 25) {
+      createParticle();
+    }
+  }, 2000); // Create a new particle every 2 seconds
+  
+  // Enhanced typewriter effect
+  function typeWriter(element, text, speed = 50) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+    type();
+  }
+  
+  // Initialize typewriter for mobile devices where CSS animation might not work well
+  if (window.innerWidth <= 768) {
+    const typewriterElements = document.querySelectorAll('.typewriter');
+    typewriterElements.forEach((element, index) => {
+      const text = element.textContent;
+      setTimeout(() => {
+        typeWriter(element, text, 80);
+      }, index * 1500);
+    });
+  }
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Handle window resize for responsive adjustments
+window.addEventListener('resize', function() {
+  // Adjust particle count based on screen size
+  const particles = document.querySelectorAll('.particle');
+  const maxParticles = window.innerWidth < 768 ? 15 : 25;
+  
+  if (particles.length > maxParticles) {
+    for (let i = maxParticles; i < particles.length; i++) {
+      if (particles[i]) {
+        particles[i].remove();
+      }
+    }
+  }
+});
+</script>
+</body>
